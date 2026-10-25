@@ -1,0 +1,13 @@
+COMMIT_TITLE="$(head -n 1 "$1")"
+errs=()
+[[ $COMMIT_TITLE =~ ^[A-Z][A-Z_-]*\ -\  ]] || errs+=("FEATURE absente ou pas en MAJUSCULES (attendu : 'FEATURE - description')")
+desc="${COMMIT_TITLE#* - }"
+if (( ${#desc} < 7 || ${#desc} > 60 )); then
+  errs+=("description : ${#desc} caractères (attendu 7-60)")
+fi
+if (( ${#errs[@]} )); then
+  printf 'Format de commit invalide :\n' >&2
+  printf '❌ %s\n' "${errs[@]}" >&2
+  exit 1
+fi
+exit 0
