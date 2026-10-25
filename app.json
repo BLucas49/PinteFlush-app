@@ -1,0 +1,48 @@
+{
+  "expo": {
+    "name": "PinteFlush",
+    "slug": "pinteflush",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/images/icon.png",
+    "userInterfaceStyle": "automatic",
+    "android": {
+      "adaptiveIcon": {
+        "backgroundColor": "#0B3D2E",
+        "foregroundImage": "./assets/images/android-icon-foreground.png",
+        "backgroundImage": "./assets/images/android-icon-background.png",
+        "monochromeImage": "./assets/images/android-icon-monochrome.png"
+      },
+      "predictiveBackGestureEnabled": false,
+      "package": "com.pinteflush.app"
+    },
+    "plugins": [
+      "@reactvision/react-viro",
+      "@maplibre/maplibre-react-native",
+      "expo-secure-store",
+      [
+        "expo-camera",
+        {
+          "cameraPermission": "PinteFlush utilise la caméra pour scanner les QR codes et la réalité augmentée."
+        }
+      ],
+      [
+        "expo-location",
+        {
+          "locationWhenInUsePermission": "PinteFlush utilise votre position pour vérifier la proximité des joueurs."
+        }
+      ],
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "PinteFlush accède à vos photos pour choisir votre avatar.",
+          "cameraPermission": "PinteFlush utilise la caméra pour prendre votre avatar."
+        }
+      ],
+      "expo-font",
+      "expo-asset"
+    ],
+    "scheme": "pinteflush",
+    "platforms": ["android"]
+  }
+}
