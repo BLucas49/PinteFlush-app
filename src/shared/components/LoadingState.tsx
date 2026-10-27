@@ -10,7 +10,7 @@ export function LoadingState({ label = 'Chargement…' }: LoadingStateProps) {
   const { colors } = useTheme();
   return (
     <View accessible style={styles.center} accessibilityRole="progressbar" accessibilityLabel={label}>
-      <ActivityIndicator color={colors.primary} size="large" />
+      <ActivityIndicator color={colors.actionPrimary} size="large" />
     </View>
   );
 }

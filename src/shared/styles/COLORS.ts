@@ -1,25 +1,35 @@
 import type { ColorPalette } from '@/shared/types/styles.types';
 
 export const LIGHT_COLORS: ColorPalette = {
-  background: '#F6F8F7',
+  background: '#FBFBFB',
   surface: '#FFFFFF',
-  text: '#10231C',
-  textMuted: '#4A5D55',
-  primary: '#0B6B4B',
-  onPrimary: '#FFFFFF',
-  border: '#D5DED9',
+  surfaceViolet: '#EDE8F4',
+  textPrimary: '#5E4074',
+  textSecondary: '#865A9E',
+  actionPrimary: '#12676A',
+  onAction: '#FFFFFF',
+  accent: '#865A9E',
+  border: '#D8D0E8',
   danger: '#B3261E',
   success: '#1B7F3B',
 };
 
 export const DARK_COLORS: ColorPalette = {
-  background: '#0C1411',
-  surface: '#16211C',
-  text: '#EAF3EF',
-  textMuted: '#9DB1A8',
-  primary: '#3DD598',
-  onPrimary: '#06241A',
-  border: '#2A3A33',
+  background: '#211A26',
+  surface: '#2C2433',
+  surfaceViolet: '#3A3047',
+  textPrimary: '#F7F9EC',
+  textSecondary: '#B8AEC2',
+  actionPrimary: '#00A88F',
+  onAction: '#211A26',
+  accent: '#7E57C2',
+  border: '#3D3549',
   danger: '#FF8A80',
   success: '#6FDB8F',
 };
+
+export const CARD_COLORS = {
+  face: '#FFFFFF',
+  suit: '#30283A',
+  accent: '#7E57C2',
+} as const;

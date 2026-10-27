@@ -33,8 +33,8 @@ const Root = () => {
         ...base.colors,
         background: colors.background,
         card: colors.surface,
-        text: colors.text,
-        primary: colors.primary,
+        text: colors.textPrimary,
+        primary: colors.actionPrimary,
         border: colors.border,
       },
     };

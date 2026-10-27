@@ -11,10 +11,10 @@ export function ErrorState({ message, onRetry }: ErrorStateProps) {
   const { colors, spacing } = useTheme();
   return (
     <View style={[styles.center, { gap: spacing.md, padding: spacing.md }]} accessibilityRole="alert">
-      <Text style={[styles.text, { color: colors.text }]}>{message}</Text>
+      <Text style={[styles.text, { color: colors.textPrimary }]}>{message}</Text>
       {onRetry ? (
         <Pressable accessibilityRole="button" onPress={onRetry}>
-          <Text style={{ color: colors.primary }}>Réessayer</Text>
+          <Text style={{ color: colors.actionPrimary }}>Réessayer</Text>
         </Pressable>
       ) : null}
     </View>

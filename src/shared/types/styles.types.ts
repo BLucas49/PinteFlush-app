@@ -6,10 +6,12 @@ import type { TYPOGRAPHIES } from '../styles/TYPOGRAPHIES';
 export type ColorPalette = {
   background: string;
   surface: string;
-  text: string;
-  textMuted: string;
-  primary: string;
-  onPrimary: string;
+  surfaceViolet: string;
+  textPrimary: string;
+  textSecondary: string;
+  actionPrimary: string;
+  onAction: string;
+  accent: string;
   border: string;
   danger: string;
   success: string;

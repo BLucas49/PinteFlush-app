@@ -10,7 +10,7 @@ export function EmptyState({ message }: EmptyStateProps) {
   const { colors, spacing } = useTheme();
   return (
     <View style={[styles.center, { padding: spacing.md }]}>
-      <Text style={[styles.text, { color: colors.textMuted }]}>{message}</Text>
+      <Text style={[styles.text, { color: colors.textSecondary }]}>{message}</Text>
     </View>
   );
 }

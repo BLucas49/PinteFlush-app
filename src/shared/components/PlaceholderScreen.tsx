@@ -13,7 +13,7 @@ export function PlaceholderScreen({ title, children }: PlaceholderScreenProps) {
   return (
     <SafeAreaView style={[styles.root, { backgroundColor: colors.background }]}>
       <View style={[styles.content, { padding: spacing.md, gap: spacing.md }]}>
-        <Text accessibilityRole="header" style={[typography.title, { color: colors.text }]}>
+        <Text accessibilityRole="header" style={[typography.title, { color: colors.textPrimary }]}>
           {title}
         </Text>
         {children}
