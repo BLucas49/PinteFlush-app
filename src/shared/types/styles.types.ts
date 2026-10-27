@@ -1,7 +1,7 @@
-import type { RADII } from '../styles/RADII';
-import type { SHADOWS } from '../styles/SHADOWS';
-import type { SPACING } from '../styles/SPACING';
-import type { TYPOGRAPHIES } from '../styles/TYPOGRAPHIES';
+import type { RADII } from '../styles/tokens/RADII';
+import type { SHADOWS } from '../styles/tokens/SHADOWS';
+import type { SPACING } from '../styles/tokens/SPACING';
+import type { TYPOGRAPHIES } from '../styles/tokens/TYPOGRAPHIES';
 
 export type ColorPalette = {
   background: string;

@@ -1,13 +1,15 @@
 import { type PropsWithChildren, useMemo } from 'react';
 import { useColorScheme } from 'react-native';
+import { PaperProvider } from 'react-native-paper';
 
 import { useSettingsStore } from '@/shared/store/settingsStore';
 
-import { DARK_COLORS, LIGHT_COLORS } from '../styles/COLORS';
-import { RADII } from '../styles/RADII';
-import { SHADOWS } from '../styles/SHADOWS';
-import { SPACING } from '../styles/SPACING';
-import { TYPOGRAPHIES } from '../styles/TYPOGRAPHIES';
+import { buildPaperTheme } from '../styles/paperTheme';
+import { DARK_COLORS, LIGHT_COLORS } from '../styles/tokens/COLORS';
+import { RADII } from '../styles/tokens/RADII';
+import { SHADOWS } from '../styles/tokens/SHADOWS';
+import { SPACING } from '../styles/tokens/SPACING';
+import { TYPOGRAPHIES } from '../styles/tokens/TYPOGRAPHIES';
 import type { Theme } from '../types/styles.types';
 import { ThemeContext } from './ThemeContext';
 
@@ -28,5 +30,11 @@ export function ThemeProvider({ children }: PropsWithChildren) {
     [isDark],
   );
 
-  return <ThemeContext.Provider value={theme}>{children}</ThemeContext.Provider>;
+  const paperTheme = useMemo(() => buildPaperTheme(theme), [theme]);
+
+  return (
+    <ThemeContext.Provider value={theme}>
+      <PaperProvider theme={paperTheme}>{children}</PaperProvider>
+    </ThemeContext.Provider>
+  );
 }
