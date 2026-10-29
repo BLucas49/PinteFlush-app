@@ -3,9 +3,9 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Text } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
+import { LobbyScreen } from '@/features/game';
 import { HistoryScreen } from '@/features/history';
 import { LeaderboardScreen } from '@/features/leaderboard';
-import { HomeScreen } from '@/features/lobby';
 import { ProfileScreen } from '@/features/profile';
 import { SettingsScreen } from '@/features/settings';
 import { useTheme } from '@/shared/hooks/useTheme';
@@ -17,7 +17,7 @@ const Tab = createBottomTabNavigator<MainTabParamList>();
 type IconName = keyof typeof Ionicons.glyphMap;
 
 const TABS: { name: keyof MainTabParamList; title: string; icon: IconName; component: React.ComponentType }[] = [
-  { name: 'Home', title: 'Accueil', icon: 'home-outline', component: HomeScreen },
+  { name: 'Lobby', title: 'Salon', icon: 'people-outline', component: LobbyScreen },
   { name: 'History', title: 'Historique', icon: 'time-outline', component: HistoryScreen },
   { name: 'Leaderboard', title: 'Classement', icon: 'trophy-outline', component: LeaderboardScreen },
   { name: 'Profile', title: 'Profil', icon: 'person-outline', component: ProfileScreen },

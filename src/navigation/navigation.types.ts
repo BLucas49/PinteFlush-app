@@ -11,7 +11,7 @@ export type AuthStackParamList = {
 };
 
 export type MainTabParamList = {
-  Home: undefined;
+  Lobby: undefined;
   History: undefined;
   Leaderboard: undefined;
   Profile: undefined;
@@ -20,8 +20,7 @@ export type MainTabParamList = {
 
 export type AppStackParamList = {
   MainTabs: NavigatorScreenParams<MainTabParamList> | undefined;
-  CreateParty: undefined;
-  JoinParty: undefined;
+  Lobby: undefined;
   WaitingRoom: { roomId: string };
   Game: { roomId: string };
   GameOver: { roomId: string };
