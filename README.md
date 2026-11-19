@@ -7,7 +7,7 @@ Go!. Backend : [PinteFlush-back](../PinteFlush-back) (Colyseus + Express).
 
 - Node ≥ 24, JDK 17, Android SDK (voir « Problèmes »).
 - Un téléphone Android compatible ARCore (la RA ne fonctionne pas sur
-  émulateur).
+  émulateur), avec le débogage USB activé.
 - Le backend lancé (`npm start` dans PinteFlush-back, port 2567).
 
 ## Installation
@@ -17,19 +17,36 @@ npm install            # installe aussi les hooks Husky (script prepare)
 cp .env.example .env   # sur téléphone physique : mettre l'IP LAN du PC, pas localhost
 ```
 
-## Développement
+Le dossier `android/` est généré (Continuous Native Generation) et non versionné
+: ne jamais le modifier à la main.
 
-La RA (Viro) et les cartes (MapLibre) exigent du code natif : Expo Go ne suffit
-pas.
+## Lancement
+
+La RA (Viro) exige du code natif : Expo Go ne suffit pas, il faut une
+development build.
+
+Première fois, ou après un changement de dépendance native, de `app.json` ou de
+plugin Expo :
 
 ```bash
-npm run android      # build + installation de la development build (expo run:android)
-npm run start:dev    # serveur Metro pour le dev client
-npm start            # serveur Metro standard (expo start)
+npx expo prebuild -p android --clean   # régénère android/
+npm run android                        # build + installation sur le téléphone (expo run:android)
 ```
 
+Ensuite, au quotidien (la build est déjà installée) :
+
+```bash
+npm run start:dev    # serveur Metro pour le dev client
+```
+
+`npm start` lance le serveur Metro standard (`expo start`).
+
 > Sous Windows, lancer ces commandes depuis un chemin court (voir « Problèmes
-> »).
+> »). Le fichier `android/local.properties` est à recréer après chaque
+> `prebuild --clean`.
+
+Pour ajouter un paquet : `npx expo install <paquet>` (versions compatibles avec
+le SDK).
 
 En mode dev, l'écran de connexion propose un bouton « Connexion factice » le
 temps que l'API d'authentification soit branchée.
