@@ -33,3 +33,11 @@ export const CARD_COLORS = {
   suit: '#30283A',
   accent: '#7E57C2',
 } as const;
+
+// Boutons et messages posés sur la caméra : identiques en thème clair et sombre
+export const OVERLAY_COLORS = {
+  background: 'rgba(0,0,0,0.65)',
+  content: '#FFFFFF',
+} as const;
+
+export const AR_LIGHT_COLOR = '#FFFFFF';

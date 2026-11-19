@@ -13,7 +13,14 @@ const LoginScreen = () => {
   const { spacing } = useTheme();
   const signIn = useAuthStore((s) => s.signIn);
 
-  const handleSignIn = () => signIn({ token: 'dev-token', user: { id: 'dev', username: 'Testeur' } });
+  const handleSignIn = () =>
+    signIn({
+      token: 'dev-token',
+      user: {
+        id: 'dev',
+        username: 'Testeur',
+      },
+    });
 
   const [login, setLogin] = useState('');
   const [password, setPassword] = useState('');

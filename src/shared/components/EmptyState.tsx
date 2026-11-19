@@ -16,6 +16,10 @@ export function EmptyState({ message }: EmptyStateProps) {
 }
 
 const styles = StyleSheet.create({
-  center: { flex: 1, alignItems: 'center', justifyContent: 'center' },
+  center: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
   text: { textAlign: 'center' },
 });

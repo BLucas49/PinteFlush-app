@@ -16,6 +16,16 @@ export const useAuthStore = create<AuthState>()((set) => ({
   status: 'unauthenticated',
   token: null,
   user: null,
-  signIn: ({ token, user }) => set({ status: 'authenticated', token, user }),
-  signOut: () => set({ status: 'unauthenticated', token: null, user: null }),
+  signIn: ({ token, user }) =>
+    set({
+      status: 'authenticated',
+      token,
+      user,
+    }),
+  signOut: () =>
+    set({
+      status: 'unauthenticated',
+      token: null,
+      user: null,
+    }),
 }));

@@ -17,6 +17,8 @@
       "package": "com.pinteflush.app"
     },
     "plugins": [
+      ["@reactvision/react-viro", { "android": { "xRMode": ["AR"] } }],
+      "./plugins/withFrescoVersion",
       "expo-secure-store",
       [
         "expo-camera",

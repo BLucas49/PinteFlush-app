@@ -12,5 +12,5 @@ jest.mock('expo-secure-store', () => {
 });
 
 jest.mock('@reactvision/react-viro', () => ({}));
-jest.mock('@maplibre/maplibre-react-native', () => ({}));
+jest.mock('@maplibre/maplibre-react-native', () => ({}), { virtual: true });
 jest.mock('react-native-reanimated', () => jest.requireActual('react-native-reanimated/mock'));
