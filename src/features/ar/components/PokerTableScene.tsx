@@ -16,6 +16,7 @@ import { CARD_TARGET_NAME } from '../constants/AR';
 import { arLog } from '../services/arLogger';
 import { useARPlacementStore } from '../store/arPlacementStore';
 import type { ARPlacementSource } from '../types/ar.types';
+import { getCardYaw, isValidCardPosition } from '../utils/anchorPose';
 import PokerTable from './PokerTable';
 
 const PokerTableScene = () => {
@@ -37,15 +38,26 @@ const PokerTableScene = () => {
 
   const [pose, setPose] = useState<{ key: number; position: Position; yaw: number } | null>(null);
 
+  // Renvoie false si la pose reçue est inutilisable
   const updatePose = (anchor: ViroAnchor) => {
     if (locked) {
-      return;
+      return true;
+    }
+    if (!isValidCardPosition(anchor.position)) {
+      arLog('pose ignorée : position invalide', anchor.position);
+      return false;
+    }
+    const yaw = getCardYaw(anchor.rotation);
+    if (yaw === null) {
+      arLog('pose ignorée : orientation invalide', anchor.rotation);
+      return false;
     }
     setPose({
       key: resetKey,
       position: anchor.position,
-      yaw: anchor.rotation[1],
+      yaw,
     });
+    return true;
   };
 
   const selectorRef = useRef<ViroARPlaneSelector>(null);
@@ -72,10 +84,16 @@ const PokerTableScene = () => {
         target={CARD_TARGET_NAME}
         onAnchorFound={(anchor) => {
           arLog('carte détectée', anchor);
-          updatePose(anchor);
-          handlePlaced('card');
+          if (updatePose(anchor)) {
+            handlePlaced('card');
+          }
         }}
-        onAnchorUpdated={updatePose}
+        onAnchorUpdated={(anchor) => {
+          // Si la première pose était invalide, on place le tapis dès qu'une pose correcte arrive
+          if (updatePose(anchor)) {
+            handlePlaced('card');
+          }
+        }}
         onAnchorRemoved={() => arLog('carte perdue')}
       />
 
