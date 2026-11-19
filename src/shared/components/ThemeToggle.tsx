@@ -9,7 +9,14 @@ export const ThemeToggle = () => {
   const setThemeMode = useSettingsStore((s) => s.setThemeMode);
 
   return (
-    <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', alignSelf: 'stretch' }}>
+    <View
+      style={{
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        alignSelf: 'stretch',
+      }}
+    >
       <Text>{isDark ? 'Mode sombre' : 'Mode clair'}</Text>
       <Switch
         value={isDark}
