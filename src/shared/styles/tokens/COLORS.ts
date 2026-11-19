@@ -12,6 +12,7 @@ export const LIGHT_COLORS: ColorPalette = {
   border: '#D8D0E8',
   danger: '#B3261E',
   success: '#1B7F3B',
+  gold: '#A8862A',
 };
 
 export const DARK_COLORS: ColorPalette = {
@@ -26,6 +27,7 @@ export const DARK_COLORS: ColorPalette = {
   border: '#3D3549',
   danger: '#FF8A80',
   success: '#6FDB8F',
+  gold: '#E0B85C',
 };
 
 export const CARD_COLORS = {

@@ -58,6 +58,7 @@ const MainTabs = () => {
   const insets = useSafeAreaInsets();
   return (
     <Tab.Navigator
+      initialRouteName="Leaderboard"
       screenOptions={{
         headerShown: false,
         tabBarActiveTintColor: colors.actionPrimary,

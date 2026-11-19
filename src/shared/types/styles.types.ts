@@ -15,6 +15,7 @@ export type ColorPalette = {
   border: string;
   danger: string;
   success: string;
+  gold: string;
 };
 
 export type Theme = {

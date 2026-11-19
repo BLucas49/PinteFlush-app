@@ -18,7 +18,14 @@
       "package": "com.pinteflush.app"
     },
     "plugins": [
-      ["@reactvision/react-viro", { "android": { "xRMode": ["AR"] } }],
+      [
+        "@reactvision/react-viro",
+        {
+          "android": {
+            "xRMode": ["AR"]
+          }
+        }
+      ],
       "expo-secure-store",
       [
         "expo-camera",
@@ -41,7 +48,8 @@
       ],
       "expo-font",
       "expo-asset",
-      "expo-status-bar"
+      "expo-status-bar",
+      "@maplibre/maplibre-react-native"
     ],
     "scheme": "pinteflush",
     "platforms": ["android"]
