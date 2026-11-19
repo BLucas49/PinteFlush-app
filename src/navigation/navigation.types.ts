@@ -21,6 +21,7 @@ export type MainTabParamList = {
 export type AppStackParamList = {
   MainTabs: NavigatorScreenParams<MainTabParamList> | undefined;
   Lobby: undefined;
+  Scanner: undefined;
   WaitingRoom: { roomId: string };
   Game: { roomId: string };
   GameOver: { roomId: string };
