@@ -38,7 +38,9 @@ export const toAppError = (error: unknown): AppError => {
       return new AppError('NETWORK', 'Impossible de joindre le serveur.');
     }
     const { status, data } = error.response;
-    const message = typeof data?.message === 'string' ? data.message : error.message;
+    // Le back renvoie { success: false, error: "…" }
+    const serverMessage: unknown = data?.error ?? data?.message;
+    const message = typeof serverMessage === 'string' ? serverMessage : error.message;
     return new AppError(fromStatus(status), message, status);
   }
   return new AppError('UNKNOWN', error instanceof Error ? error.message : 'Erreur inconnue.');

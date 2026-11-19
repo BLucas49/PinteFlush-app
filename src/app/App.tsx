@@ -4,7 +4,7 @@ import { useEffect, useMemo } from 'react';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
-import { useAuthStore } from '@/features/auth';
+import { renewSession, useAuthStore } from '@/features/auth';
 import RootNavigator from '@/navigation/RootNavigator';
 import { getEnv } from '@/shared/config/env';
 import { useTheme } from '@/shared/hooks/useTheme';
@@ -15,9 +15,11 @@ const useBootstrap = () => {
   useEffect(() => {
     configureHttp({
       baseUrl: getEnv().apiUrl,
-      getToken: () => useAuthStore.getState().token,
-      onUnauthorized: () => useAuthStore.getState().signOut(),
+      refreshSession: renewSession,
+      onSessionExpired: () => useAuthStore.getState().clearSession(),
     });
+    // Après configureHttp : la restauration de session passe par axios
+    void useAuthStore.getState().bootstrap();
   }, []);
 };
 

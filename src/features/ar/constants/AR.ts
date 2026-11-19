@@ -6,6 +6,9 @@ export const CARD_TARGET_NAME = 'cardMarker';
 // Largeur réelle de la carte (m)
 export const CARD_PHYSICAL_WIDTH_M = 0.0856;
 
+// Au-delà de cette distance (en mètres), la position de la carte est considérée comme fausse
+export const MAX_CARD_DISTANCE_M = 5;
+
 // Taille du tapis
 export const TABLE_SCALE: Position = [0.2, 0.2, 0.2];
 export const TABLE_POSITION: Position = [0, 0, 0];
