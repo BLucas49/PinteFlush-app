@@ -10,7 +10,7 @@ type LobbyMode = 'join' | 'create';
 
 const MODES = [
   { value: 'join', label: 'Rejoindre', icon: 'play-outline' },
-  { value: 'create', label: 'Créer', icon: 'add' },
+  { value: 'create', label: 'Créer', icon: 'plus' },
 ] as const satisfies readonly [SegmentedToggleOption, SegmentedToggleOption];
 
 const LobbyScreen = () => {

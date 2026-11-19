@@ -1,4 +1,4 @@
-import { Ionicons } from '@expo/vector-icons';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { useState } from 'react';
 import { Pressable, StyleSheet, Text, TextInput, View } from 'react-native';
 
@@ -61,7 +61,7 @@ export function CreatePartyForm() {
             placeholderTextColor={colors.border}
             returnKeyType="done"
           />
-          <Ionicons name="location-outline" size={20} color={colors.actionPrimary} />
+          <MaterialCommunityIcons name="map-marker-outline" size={20} color={colors.actionPrimary} />
         </View>
       </View>
 
@@ -79,7 +79,7 @@ export function CreatePartyForm() {
             onPress={() => setPlayers((p) => Math.max(p - 1, MIN_SEATS))}
             style={[stepperButton, players <= MIN_SEATS && styles.disabled]}
           >
-            <Ionicons name="remove" size={18} color={colors.textPrimary} />
+            <MaterialCommunityIcons name="minus" size={18} color={colors.textPrimary} />
           </Pressable>
           <Text style={[typography.heading, styles.seats, { color: colors.textPrimary }]}>{players}</Text>
           <Pressable
@@ -89,7 +89,7 @@ export function CreatePartyForm() {
             onPress={() => setPlayers((p) => Math.min(p + 1, MAX_SEATS))}
             style={[stepperButton, players >= MAX_SEATS && styles.disabled]}
           >
-            <Ionicons name="add" size={18} color={colors.actionPrimary} />
+            <MaterialCommunityIcons name="plus" size={18} color={colors.actionPrimary} />
           </Pressable>
         </View>
       </View>

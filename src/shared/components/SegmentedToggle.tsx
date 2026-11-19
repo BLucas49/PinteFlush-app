@@ -1,9 +1,9 @@
-import { Ionicons } from '@expo/vector-icons';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 
 import { useTheme } from '@/shared/hooks/useTheme';
 
-type IconName = keyof typeof Ionicons.glyphMap;
+type IconName = keyof typeof MaterialCommunityIcons.glyphMap;
 
 export type SegmentedToggleOption = {
   value: string;
@@ -40,7 +40,7 @@ export const SegmentedToggle = ({ options, value, onChange }: SegmentedTogglePro
               selected && { backgroundColor: colors.actionPrimary },
             ]}
           >
-            {option.icon && <Ionicons name={option.icon} size={18} color={color} />}
+            {option.icon && <MaterialCommunityIcons name={option.icon} size={18} color={color} />}
             <Text style={[typography.action, { color }]}>{option.label}</Text>
           </Pressable>
         );

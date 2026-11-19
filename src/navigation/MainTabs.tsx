@@ -1,4 +1,4 @@
-import { Ionicons } from '@expo/vector-icons';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Text } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -14,14 +14,14 @@ import type { MainTabParamList } from './navigation.types';
 
 const Tab = createBottomTabNavigator<MainTabParamList>();
 
-type IconName = keyof typeof Ionicons.glyphMap;
+type IconName = keyof typeof MaterialCommunityIcons.glyphMap;
 
 const TABS: { name: keyof MainTabParamList; title: string; icon: IconName; component: React.ComponentType }[] = [
-  { name: 'Lobby', title: 'Salon', icon: 'people-outline', component: LobbyScreen },
-  { name: 'History', title: 'Historique', icon: 'time-outline', component: HistoryScreen },
+  { name: 'Lobby', title: 'Salon', icon: 'account-group-outline', component: LobbyScreen },
+  { name: 'History', title: 'Historique', icon: 'clock-outline', component: HistoryScreen },
   { name: 'Leaderboard', title: 'Classement', icon: 'trophy-outline', component: LeaderboardScreen },
-  { name: 'Profile', title: 'Profil', icon: 'person-outline', component: ProfileScreen },
-  { name: 'Settings', title: 'Réglages', icon: 'settings-outline', component: SettingsScreen },
+  { name: 'Profile', title: 'Profil', icon: 'account-outline', component: ProfileScreen },
+  { name: 'Settings', title: 'Réglages', icon: 'cog-outline', component: SettingsScreen },
 ];
 
 const activeIcon = (icon: IconName) => icon.replace(/-outline$/, '') as IconName;
@@ -61,7 +61,7 @@ const MainTabs = () => {
           options={{
             title,
             tabBarIcon: ({ color, size, focused }) => (
-              <Ionicons name={focused ? activeIcon(icon) : icon} color={color} size={size} />
+              <MaterialCommunityIcons name={focused ? activeIcon(icon) : icon} color={color} size={size} />
             ),
             tabBarLabel: ({ color, focused }) => (
               <Text numberOfLines={1} style={[typography.navigation, { color, fontWeight: focused ? '700' : '500' }]}>
