@@ -1,8 +1,7 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import { GameOverScreen, GameScreen } from '@/features/game';
+import { GameOverScreen, GameScreen, LobbyScreen, ScannerScreen, WaitingRoomScreen } from '@/features/game';
 import { GameDetailScreen, HistoryMapScreen } from '@/features/history';
-import { CreatePartyScreen, JoinPartyScreen, WaitingRoomScreen } from '@/features/lobby';
 import { LegalScreen } from '@/features/settings';
 
 import MainTabs from './MainTabs';
@@ -13,8 +12,8 @@ const Stack = createNativeStackNavigator<AppStackParamList>();
 const AppNavigator = () => (
   <Stack.Navigator>
     <Stack.Screen name="MainTabs" component={MainTabs} options={{ headerShown: false }} />
-    <Stack.Screen name="CreateParty" component={CreatePartyScreen} options={{ title: 'Créer une partie' }} />
-    <Stack.Screen name="JoinParty" component={JoinPartyScreen} options={{ title: 'Rejoindre une partie' }} />
+    <Stack.Screen name="Lobby" component={LobbyScreen} options={{ title: 'Salon' }} />
+    <Stack.Screen name="Scanner" component={ScannerScreen} options={{ headerShown: false }} />
     <Stack.Screen name="WaitingRoom" component={WaitingRoomScreen} options={{ title: "Salle d'attente" }} />
     <Stack.Screen
       name="Game"

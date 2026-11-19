@@ -1,12 +1,11 @@
-import { Ionicons } from '@expo/vector-icons';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Text } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
-import { GameScreen } from '@/features/game';
+import { GameScreen, LobbyScreen } from '@/features/game';
 import { HistoryScreen } from '@/features/history';
 import { LeaderboardScreen } from '@/features/leaderboard';
-import { HomeScreen } from '@/features/lobby';
 import { ProfileScreen } from '@/features/profile';
 import { SettingsScreen } from '@/features/settings';
 import { useTheme } from '@/shared/hooks/useTheme';
@@ -15,11 +14,11 @@ import type { MainTabParamList } from './navigation.types';
 
 const Tab = createBottomTabNavigator<MainTabParamList>();
 
-type IconName = keyof typeof Ionicons.glyphMap;
+type IconName = keyof typeof MaterialCommunityIcons.glyphMap;
 
 const TABS: { name: keyof MainTabParamList; title: string; icon: IconName; component: React.ComponentType }[] = [
   {
-    name: 'Home',
+    name: 'Lobby',
     title: 'Accueil',
     icon: 'home-outline',
     component: GameScreen,
@@ -27,7 +26,7 @@ const TABS: { name: keyof MainTabParamList; title: string; icon: IconName; compo
   {
     name: 'History',
     title: 'Historique',
-    icon: 'time-outline',
+    icon: 'clock-outline',
     component: HistoryScreen,
   },
   {
@@ -39,13 +38,13 @@ const TABS: { name: keyof MainTabParamList; title: string; icon: IconName; compo
   {
     name: 'Profile',
     title: 'Profil',
-    icon: 'person-outline',
+    icon: 'account-outline',
     component: ProfileScreen,
   },
   {
     name: 'Settings',
     title: 'Réglages',
-    icon: 'settings-outline',
+    icon: 'cog-outline',
     component: SettingsScreen,
   },
 ];
@@ -88,7 +87,7 @@ const MainTabs = () => {
             title,
             tabBarStyle: component === GameScreen ? { display: 'none' } : undefined,
             tabBarIcon: ({ color, size, focused }) => (
-              <Ionicons name={focused ? activeIcon(icon) : icon} color={color} size={size} />
+              <MaterialCommunityIcons name={focused ? activeIcon(icon) : icon} color={color} size={size} />
             ),
             tabBarLabel: ({ color, focused }) => (
               <Text
