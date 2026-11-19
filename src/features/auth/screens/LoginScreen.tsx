@@ -10,12 +10,30 @@ const LoginScreen = () => {
   const { spacing } = useTheme();
   const signIn = useAuthStore((s) => s.signIn);
 
-  const handleSignIn = () => signIn({ token: 'dev-token', user: { id: 'dev', username: 'Testeur' } });
+  const handleSignIn = () =>
+    signIn({
+      token: 'dev-token',
+      user: {
+        id: 'dev',
+        username: 'Testeur',
+      },
+    });
 
   return (
     <PlaceholderScreen title="Connexion">
-      <View style={{ gap: spacing.sm, alignSelf: 'stretch', paddingHorizontal: spacing.lg }}>
-        <View style={{ flexDirection: 'row', gap: spacing.sm }}>
+      <View
+        style={{
+          gap: spacing.sm,
+          alignSelf: 'stretch',
+          paddingHorizontal: spacing.lg,
+        }}
+      >
+        <View
+          style={{
+            flexDirection: 'row',
+            gap: spacing.sm,
+          }}
+        >
           <AppButton style={{ flex: 1 }} onPress={handleSignIn}>
             Suivre 50
           </AppButton>

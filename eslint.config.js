@@ -49,6 +49,20 @@ module.exports = defineConfig([
       eqeqeq: ['error', 'always', { null: 'ignore' }],
       curly: ['warn', 'all'],
       'no-nested-ternary': 'warn',
+
+      // Objets littéraux : une propriété par ligne dès 2 propriétés.
+      // Prettier (objectWrap: "preserve") conserve ensuite ces retours à la ligne.
+      // Pas d'ObjectPattern : Prettier recolle les déstructurations sur une ligne.
+      'object-curly-newline': [
+        'error',
+        {
+          ObjectExpression: {
+            minProperties: 2,
+            multiline: true,
+            consistent: true,
+          },
+        },
+      ],
     },
   },
 
@@ -58,13 +72,20 @@ module.exports = defineConfig([
       // ==================== TYPESCRIPT ====================
       '@typescript-eslint/no-unused-vars': [
         'warn',
-        { argsIgnorePattern: '^_', varsIgnorePattern: '^_', caughtErrorsIgnorePattern: '^_' },
+        {
+          argsIgnorePattern: '^_',
+          varsIgnorePattern: '^_',
+          caughtErrorsIgnorePattern: '^_',
+        },
       ],
       '@typescript-eslint/no-explicit-any': 'error',
       '@typescript-eslint/no-non-null-assertion': 'error',
       '@typescript-eslint/consistent-type-imports': [
         'warn',
-        { prefer: 'type-imports', disallowTypeAnnotations: false },
+        {
+          prefer: 'type-imports',
+          disallowTypeAnnotations: false,
+        },
       ],
     },
   },

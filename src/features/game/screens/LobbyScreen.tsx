@@ -9,8 +9,16 @@ import { JoinPartyForm } from '../components/JoinPartyForm';
 type LobbyMode = 'join' | 'create';
 
 const MODES = [
-  { value: 'join', label: 'Rejoindre', icon: 'play-outline' },
-  { value: 'create', label: 'Créer', icon: 'plus' },
+  {
+    value: 'join',
+    label: 'Rejoindre',
+    icon: 'play-outline',
+  },
+  {
+    value: 'create',
+    label: 'Créer',
+    icon: 'plus',
+  },
 ] as const satisfies readonly [SegmentedToggleOption, SegmentedToggleOption];
 
 const LobbyScreen = () => {

@@ -13,7 +13,14 @@ export function JoinPartyForm() {
 
   const canSubmit = code.trim().length === 6;
 
-  const label = [typography.caption, styles.label, { color: colors.textSecondary, marginBottom: spacing.xs }];
+  const label = [
+    typography.caption,
+    styles.label,
+    {
+      color: colors.textSecondary,
+      marginBottom: spacing.xs,
+    },
+  ];
   const field = [
     styles.field,
     {
@@ -55,7 +62,12 @@ export function JoinPartyForm() {
       <Text style={[typography.caption, { color: colors.textSecondary }]}>{infos}</Text>
 
       <AppButton
-        onPress={() => navigation.navigate('App', { screen: 'WaitingRoom', params: { roomId: code.trim() } })}
+        onPress={() =>
+          navigation.navigate('App', {
+            screen: 'WaitingRoom',
+            params: { roomId: code.trim() },
+          })
+        }
         disabled={!canSubmit}
         style={{ marginTop: spacing.md }}
         contentStyle={[styles.buttonContent, { paddingVertical: spacing.sm }]}
@@ -69,12 +81,39 @@ export function JoinPartyForm() {
 
 const styles = StyleSheet.create({
   label: { fontWeight: '600' },
-  field: { flex: 1, flexDirection: 'row', minHeight: 46, minWidth: 200, borderWidth: 1 },
-  input: { flex: 1, paddingVertical: 12 },
-  row: { flexDirection: 'row', justifyContent: 'space-between', gap: 12, alignItems: 'flex-end' },
-  iconButton: { width: 46, height: 46, margin: 0, padding: 0 },
-  stepperButton: { width: 32, height: 32, alignItems: 'center', justifyContent: 'center' },
-  seats: { minWidth: 24, textAlign: 'center' },
+  field: {
+    flex: 1,
+    flexDirection: 'row',
+    minHeight: 46,
+    minWidth: 200,
+    borderWidth: 1,
+  },
+  input: {
+    flex: 1,
+    paddingVertical: 12,
+  },
+  row: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    gap: 12,
+    alignItems: 'flex-end',
+  },
+  iconButton: {
+    width: 46,
+    height: 46,
+    margin: 0,
+    padding: 0,
+  },
+  stepperButton: {
+    width: 32,
+    height: 32,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  seats: {
+    minWidth: 24,
+    textAlign: 'center',
+  },
   disabled: { opacity: 0.4 },
   buttonContent: { flexDirection: 'row-reverse' },
 });

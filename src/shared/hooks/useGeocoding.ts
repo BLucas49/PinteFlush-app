@@ -19,7 +19,12 @@ export function useGeocoding() {
         throw new Error('Permission de localisation refusée');
       }
       const [result] = await Location.geocodeAsync(address);
-      const found = result ? { latitude: result.latitude, longitude: result.longitude } : null;
+      const found = result
+        ? {
+            latitude: result.latitude,
+            longitude: result.longitude,
+          }
+        : null;
       if (!found) {
         setError('Adresse introuvable');
       }
@@ -33,5 +38,10 @@ export function useGeocoding() {
     }
   };
 
-  return { coordinates, error, loading, geocode };
+  return {
+    coordinates,
+    error,
+    loading,
+    geocode,
+  };
 }

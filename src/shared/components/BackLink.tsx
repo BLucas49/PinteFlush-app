@@ -29,6 +29,10 @@ export const BackLink = ({ label, onPress }: BackLinkProps) => {
 };
 
 const styles = StyleSheet.create({
-  root: { flexDirection: 'row', alignItems: 'center', alignSelf: 'flex-start' },
+  root: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    alignSelf: 'flex-start',
+  },
   label: { fontWeight: '600' },
 });

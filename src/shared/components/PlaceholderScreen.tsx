@@ -19,10 +19,22 @@ export function PlaceholderScreen({ title, subtitle, header, centered = true, ch
         style={[
           styles.content,
           centered && styles.centered,
-          { padding: centered ? spacing.md : spacing.lg, gap: spacing.md },
+          {
+            padding: centered ? spacing.md : spacing.lg,
+            gap: spacing.md,
+          },
         ]}
       >
-        {header && <View style={{ alignSelf: 'stretch', marginBottom: spacing.lg }}>{header}</View>}
+        {header && (
+          <View
+            style={{
+              alignSelf: 'stretch',
+              marginBottom: spacing.lg,
+            }}
+          >
+            {header}
+          </View>
+        )}
         <View style={{ gap: spacing.xs }}>
           <Text accessibilityRole="header" style={[typography.title, { color: colors.textPrimary }]}>
             {title}
@@ -38,5 +50,8 @@ export function PlaceholderScreen({ title, subtitle, header, centered = true, ch
 const styles = StyleSheet.create({
   root: { flex: 1 },
   content: { flex: 1 },
-  centered: { justifyContent: 'center', alignItems: 'center' },
+  centered: {
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
 });

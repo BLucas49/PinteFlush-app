@@ -23,7 +23,14 @@ export const SegmentedToggle = ({ options, value, onChange }: SegmentedTogglePro
   return (
     <View
       accessibilityRole="tablist"
-      style={[styles.root, { backgroundColor: colors.surfaceViolet, borderRadius: radii.md, padding: spacing.xs }]}
+      style={[
+        styles.root,
+        {
+          backgroundColor: colors.surfaceViolet,
+          borderRadius: radii.md,
+          padding: spacing.xs,
+        },
+      ]}
     >
       {options.map((option) => {
         const selected = option.value === value;
@@ -36,7 +43,10 @@ export const SegmentedToggle = ({ options, value, onChange }: SegmentedTogglePro
             onPress={() => onChange(option.value)}
             style={[
               styles.segment,
-              { gap: spacing.sm, borderRadius: radii.sm },
+              {
+                gap: spacing.sm,
+                borderRadius: radii.sm,
+              },
               selected && { backgroundColor: colors.actionPrimary },
             ]}
           >
@@ -50,6 +60,15 @@ export const SegmentedToggle = ({ options, value, onChange }: SegmentedTogglePro
 };
 
 const styles = StyleSheet.create({
-  root: { flexDirection: 'row', alignSelf: 'stretch' },
-  segment: { flex: 1, flexDirection: 'row', alignItems: 'center', justifyContent: 'center', minHeight: 36 },
+  root: {
+    flexDirection: 'row',
+    alignSelf: 'stretch',
+  },
+  segment: {
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    minHeight: 36,
+  },
 });

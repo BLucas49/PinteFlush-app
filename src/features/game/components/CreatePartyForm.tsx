@@ -18,7 +18,14 @@ export function CreatePartyForm() {
 
   const canSubmit = name.trim().length > 0 && address.trim().length > 0 && !loading;
 
-  const label = [typography.caption, styles.label, { color: colors.textSecondary, marginBottom: spacing.xs }];
+  const label = [
+    typography.caption,
+    styles.label,
+    {
+      color: colors.textSecondary,
+      marginBottom: spacing.xs,
+    },
+  ];
   const field = [
     styles.field,
     {
@@ -32,7 +39,13 @@ export function CreatePartyForm() {
   const infos = coordinates
     ? `Lieu trouvé : ${coordinates.latitude.toFixed(5)}, ${coordinates.longitude.toFixed(5)}`
     : 'Un code à partager sera créé avec votre partie.';
-  const stepperButton = [styles.stepperButton, { backgroundColor: colors.surfaceViolet, borderRadius: radii.sm }];
+  const stepperButton = [
+    styles.stepperButton,
+    {
+      backgroundColor: colors.surfaceViolet,
+      borderRadius: radii.sm,
+    },
+  ];
 
   return (
     <View style={{ gap: spacing.md }}>
@@ -110,11 +123,31 @@ export function CreatePartyForm() {
 
 const styles = StyleSheet.create({
   label: { fontWeight: '600' },
-  field: { flexDirection: 'row', alignItems: 'center', minHeight: 46, borderWidth: 1 },
-  input: { flex: 1, paddingVertical: 12 },
-  row: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' },
-  stepperButton: { width: 32, height: 32, alignItems: 'center', justifyContent: 'center' },
-  seats: { minWidth: 24, textAlign: 'center' },
+  field: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    minHeight: 46,
+    borderWidth: 1,
+  },
+  input: {
+    flex: 1,
+    paddingVertical: 12,
+  },
+  row: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  stepperButton: {
+    width: 32,
+    height: 32,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  seats: {
+    minWidth: 24,
+    textAlign: 'center',
+  },
   disabled: { opacity: 0.4 },
   buttonContent: { flexDirection: 'row-reverse' },
 });

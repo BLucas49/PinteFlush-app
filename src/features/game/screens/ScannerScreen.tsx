@@ -55,10 +55,22 @@ const ScannerScreen = () => {
       );
     }
 
-    const corner = { borderColor: LIGHT_COLORS.surface, width: CORNER_SIZE, height: CORNER_SIZE };
+    const corner = {
+      borderColor: LIGHT_COLORS.surface,
+      width: CORNER_SIZE,
+      height: CORNER_SIZE,
+    };
 
     return (
-      <View style={[styles.camera, { marginHorizontal: -spacing.lg, marginBottom: -spacing.lg }]}>
+      <View
+        style={[
+          styles.camera,
+          {
+            marginHorizontal: -spacing.lg,
+            marginBottom: -spacing.lg,
+          },
+        ]}
+      >
         {isFocused && (
           <CameraView
             style={StyleSheet.absoluteFill} // étire la caméra sur tout l'écran
@@ -107,14 +119,43 @@ const ScannerScreen = () => {
 };
 
 const styles = StyleSheet.create({
-  camera: { flex: 1, overflow: 'hidden' },
-  overlay: { alignItems: 'center', justifyContent: 'center' },
-  frame: { width: FRAME_SIZE, height: FRAME_SIZE },
+  camera: {
+    flex: 1,
+    overflow: 'hidden',
+  },
+  overlay: {
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  frame: {
+    width: FRAME_SIZE,
+    height: FRAME_SIZE,
+  },
   corner: { position: 'absolute' },
-  topLeft: { top: 0, left: 0, borderTopWidth: CORNER_WIDTH, borderLeftWidth: CORNER_WIDTH },
-  topRight: { top: 0, right: 0, borderTopWidth: CORNER_WIDTH, borderRightWidth: CORNER_WIDTH },
-  bottomLeft: { bottom: 0, left: 0, borderBottomWidth: CORNER_WIDTH, borderLeftWidth: CORNER_WIDTH },
-  bottomRight: { bottom: 0, right: 0, borderBottomWidth: CORNER_WIDTH, borderRightWidth: CORNER_WIDTH },
+  topLeft: {
+    top: 0,
+    left: 0,
+    borderTopWidth: CORNER_WIDTH,
+    borderLeftWidth: CORNER_WIDTH,
+  },
+  topRight: {
+    top: 0,
+    right: 0,
+    borderTopWidth: CORNER_WIDTH,
+    borderRightWidth: CORNER_WIDTH,
+  },
+  bottomLeft: {
+    bottom: 0,
+    left: 0,
+    borderBottomWidth: CORNER_WIDTH,
+    borderLeftWidth: CORNER_WIDTH,
+  },
+  bottomRight: {
+    bottom: 0,
+    right: 0,
+    borderBottomWidth: CORNER_WIDTH,
+    borderRightWidth: CORNER_WIDTH,
+  },
   hint: { opacity: 0.9 },
 });
 

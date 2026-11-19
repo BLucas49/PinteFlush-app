@@ -15,6 +15,9 @@ export const useSettingsStore = create<SettingsState>()(
       themeMode: 'system',
       setThemeMode: (themeMode) => set({ themeMode }),
     }),
-    { name: 'settings', storage: createJSONStorage(() => AsyncStorage) },
+    {
+      name: 'settings',
+      storage: createJSONStorage(() => AsyncStorage),
+    },
   ),
 );

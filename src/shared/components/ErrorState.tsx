@@ -10,7 +10,16 @@ interface ErrorStateProps {
 export function ErrorState({ message, onRetry }: ErrorStateProps) {
   const { colors, spacing } = useTheme();
   return (
-    <View style={[styles.center, { gap: spacing.md, padding: spacing.md }]} accessibilityRole="alert">
+    <View
+      style={[
+        styles.center,
+        {
+          gap: spacing.md,
+          padding: spacing.md,
+        },
+      ]}
+      accessibilityRole="alert"
+    >
       <Text style={[styles.text, { color: colors.textPrimary }]}>{message}</Text>
       {onRetry ? (
         <Pressable accessibilityRole="button" onPress={onRetry}>
@@ -22,6 +31,10 @@ export function ErrorState({ message, onRetry }: ErrorStateProps) {
 }
 
 const styles = StyleSheet.create({
-  center: { flex: 1, alignItems: 'center', justifyContent: 'center' },
+  center: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
   text: { textAlign: 'center' },
 });

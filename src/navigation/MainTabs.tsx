@@ -3,7 +3,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Text } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
-import { LobbyScreen } from '@/features/game';
+import { GameScreen, LobbyScreen } from '@/features/game';
 import { HistoryScreen } from '@/features/history';
 import { LeaderboardScreen } from '@/features/leaderboard';
 import { ProfileScreen } from '@/features/profile';
@@ -17,11 +17,36 @@ const Tab = createBottomTabNavigator<MainTabParamList>();
 type IconName = keyof typeof MaterialCommunityIcons.glyphMap;
 
 const TABS: { name: keyof MainTabParamList; title: string; icon: IconName; component: React.ComponentType }[] = [
-  { name: 'Lobby', title: 'Salon', icon: 'account-group-outline', component: LobbyScreen },
-  { name: 'History', title: 'Historique', icon: 'clock-outline', component: HistoryScreen },
-  { name: 'Leaderboard', title: 'Classement', icon: 'trophy-outline', component: LeaderboardScreen },
-  { name: 'Profile', title: 'Profil', icon: 'account-outline', component: ProfileScreen },
-  { name: 'Settings', title: 'Réglages', icon: 'cog-outline', component: SettingsScreen },
+  {
+    name: 'Lobby',
+    title: 'Accueil',
+    icon: 'home-outline',
+    component: GameScreen,
+  },
+  {
+    name: 'History',
+    title: 'Historique',
+    icon: 'clock-outline',
+    component: HistoryScreen,
+  },
+  {
+    name: 'Leaderboard',
+    title: 'Classement',
+    icon: 'trophy-outline',
+    component: LeaderboardScreen,
+  },
+  {
+    name: 'Profile',
+    title: 'Profil',
+    icon: 'account-outline',
+    component: ProfileScreen,
+  },
+  {
+    name: 'Settings',
+    title: 'Réglages',
+    icon: 'cog-outline',
+    component: SettingsScreen,
+  },
 ];
 
 const activeIcon = (icon: IconName) => icon.replace(/-outline$/, '') as IconName;
@@ -60,11 +85,21 @@ const MainTabs = () => {
           component={component}
           options={{
             title,
+            tabBarStyle: component === GameScreen ? { display: 'none' } : undefined,
             tabBarIcon: ({ color, size, focused }) => (
               <MaterialCommunityIcons name={focused ? activeIcon(icon) : icon} color={color} size={size} />
             ),
             tabBarLabel: ({ color, focused }) => (
-              <Text numberOfLines={1} style={[typography.navigation, { color, fontWeight: focused ? '700' : '500' }]}>
+              <Text
+                numberOfLines={1}
+                style={[
+                  typography.navigation,
+                  {
+                    color,
+                    fontWeight: focused ? '700' : '500',
+                  },
+                ]}
+              >
                 {title}
               </Text>
             ),
