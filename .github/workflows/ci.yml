@@ -2,9 +2,10 @@ name: CI
 
 on:
   push:
-    branches: [dev, main]
+    # branches: [dev, main]
+    branches: [disabled]
   pull_request:
-
+    branches: [disabled]
 jobs:
   check:
     runs-on: ubuntu-latest

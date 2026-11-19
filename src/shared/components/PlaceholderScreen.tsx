@@ -12,7 +12,15 @@ export function PlaceholderScreen({ title, children }: PlaceholderScreenProps) {
   const { colors, spacing, typography } = useTheme();
   return (
     <SafeAreaView style={[styles.root, { backgroundColor: colors.background }]}>
-      <View style={[styles.content, { padding: spacing.md, gap: spacing.md }]}>
+      <View
+        style={[
+          styles.content,
+          {
+            padding: spacing.md,
+            gap: spacing.md,
+          },
+        ]}
+      >
         <Text accessibilityRole="header" style={[typography.title, { color: colors.textPrimary }]}>
           {title}
         </Text>
@@ -24,5 +32,9 @@ export function PlaceholderScreen({ title, children }: PlaceholderScreenProps) {
 
 const styles = StyleSheet.create({
   root: { flex: 1 },
-  content: { flex: 1, justifyContent: 'center', alignItems: 'center' },
+  content: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
 });
