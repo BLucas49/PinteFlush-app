@@ -6,13 +6,14 @@ import {
   ViroARScene,
   ViroDirectionalLight,
   ViroNode,
+  ViroTrackingStateConstants,
 } from '@reactvision/react-viro';
 import { useRef, useState } from 'react';
 
 import type { Position } from '@/features/ar/types/position.types';
 import { AR_LIGHT_COLOR } from '@/shared/styles/tokens/COLORS';
 
-import { CARD_TARGET_NAME } from '../constants/AR';
+import { CARD_TARGET_NAME, IGNORED_POSE_LOG_INTERVAL_MS } from '../constants/AR';
 import { arLog } from '../services/arLogger';
 import { useARPlacementStore } from '../store/arPlacementStore';
 import type { ARPlacementSource } from '../types/ar.types';
@@ -38,18 +39,36 @@ const PokerTableScene = () => {
 
   const [pose, setPose] = useState<{ key: number; position: Position; yaw: number } | null>(null);
 
+  const trackingNormalRef = useRef(false);
+  const lastIgnoredLogRef = useRef(0);
+
+  // Log limité à un par seconde pour ne pas inonder la console
+  const logIgnoredPose = (reason: string, value: unknown) => {
+    const now = Date.now();
+    if (now - lastIgnoredLogRef.current < IGNORED_POSE_LOG_INTERVAL_MS) {
+      return;
+    }
+    lastIgnoredLogRef.current = now;
+    arLog(`pose ignorée : ${reason}`, value);
+  };
+
   // Renvoie false si la pose reçue est inutilisable
   const updatePose = (anchor: ViroAnchor) => {
     if (locked) {
       return true;
     }
+    // Tant que le suivi n'est pas stable, la position de la carte n'est pas fiable
+    if (!trackingNormalRef.current) {
+      logIgnoredPose('suivi pas encore stable', anchor.position);
+      return false;
+    }
     if (!isValidCardPosition(anchor.position)) {
-      arLog('pose ignorée : position invalide', anchor.position);
+      logIgnoredPose('position invalide', anchor.position);
       return false;
     }
     const yaw = getCardYaw(anchor.rotation);
     if (yaw === null) {
-      arLog('pose ignorée : orientation invalide', anchor.rotation);
+      logIgnoredPose('carte pas à plat', anchor.rotation);
       return false;
     }
     setPose({
@@ -64,14 +83,16 @@ const PokerTableScene = () => {
 
   return (
     <ViroARScene
-      anchorDetectionTypes={mode === 'plane' ? ['PlanesHorizontal'] : undefined}
-      onTrackingUpdated={(state, reason) =>
+      // En mode carte, pas de recherche de plans : ça allège le téléphone
+      anchorDetectionTypes={mode === 'plane' ? ['PlanesHorizontal'] : 'None'}
+      onTrackingUpdated={(state, reason) => {
+        trackingNormalRef.current = state === ViroTrackingStateConstants.TRACKING_NORMAL;
         arLog('tracking', {
           state,
           reason,
           mode,
-        })
-      }
+        });
+      }}
       onAnchorFound={(anchor) => selectorRef.current?.handleAnchorFound(anchor)}
       onAnchorUpdated={(anchor) => selectorRef.current?.handleAnchorUpdated(anchor)}
       onAnchorRemoved={(anchor) => anchor && selectorRef.current?.handleAnchorRemoved(anchor)}

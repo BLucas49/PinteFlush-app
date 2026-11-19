@@ -3,11 +3,17 @@ import type { Position } from '@/features/ar/types/position.types';
 // Nom de la carte à reconnaître
 export const CARD_TARGET_NAME = 'cardMarker';
 
-// Largeur réelle de la carte (m)
-export const CARD_PHYSICAL_WIDTH_M = 0.0856;
+// Largeur réelle de l'image cible (m) : card-marker.png est en portrait, donc c'est le petit côté de la carte
+export const CARD_PHYSICAL_WIDTH_M = 0.054;
 
 // Au-delà de cette distance (en mètres), la position de la carte est considérée comme fausse
 export const MAX_CARD_DISTANCE_M = 5;
+
+// Carte acceptée si elle est à plat, avec environ 35° d'inclinaison au plus
+export const MIN_CARD_FLATNESS = 0.8;
+
+// Délai minimal entre deux logs de pose ignorée
+export const IGNORED_POSE_LOG_INTERVAL_MS = 1000;
 
 // Taille du tapis
 export const TABLE_SCALE: Position = [0.2, 0.2, 0.2];
